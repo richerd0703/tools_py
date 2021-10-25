@@ -7,7 +7,7 @@ IMAGE_SIZE = 256  # 每张小图片的大小
 IMAGE_SIZE_x = 256
 IMAGE_ROW = 4  # 图片间隔，也就是合并成一张图后，一共有几行
 IMAGE_COLUMN = 4  # 图片间隔，也就是合并成一张图后，一共有几列
-IMAGE_SAVE_PATH = r'D:\test\temp\images\final.png'  # 图片转换后的地址
+IMAGE_SAVE_PATH = r'D:\test\temp\final.png'  # 图片转换后的地址
 
 # 获取图片集地址下的所有图片名称
 # image_names = [name for name in os.listdir(IMAGES_PATH) for item in IMAGES_FORMAT if
@@ -21,6 +21,8 @@ for file in os.listdir(IMAGES_PATH):
 if len(image_names) != IMAGE_ROW * IMAGE_COLUMN:
     raise ValueError("合成图片的参数和要求的数量不能匹配！")
 
+s = image_names[0].split("_")
+image_names.sort(key=lambda x: int(x.split('_')[1][:-4]))
 
 # 定义图像拼接函数
 def image_compose():
